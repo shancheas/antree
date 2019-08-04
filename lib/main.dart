@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'pages/home_view.dart';
 import 'pages/transaction_view.dart';
 
 void main() => runApp(MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'ANTREE ID'),
+      home: HomePage(),
     );
   }
 }
