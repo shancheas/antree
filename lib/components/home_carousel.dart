@@ -33,7 +33,7 @@ class _HomeCarouselState extends State<HomeCarousel> {
           margin: EdgeInsets.all(5.0),
           child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(5.0)),
-            child: Image.network('http://multidimensionsystems.com/development/antree_web/assets/images/$i', fit: BoxFit.cover, width: 1000.0, height: 100.0),
+            child: Image.network('http://www.burgerking.com.my/upload/image/offer/79/Double%20King_900pxx480px.png', fit: BoxFit.cover, width: 1000.0, height: 100.0),
           ),
         );
       },

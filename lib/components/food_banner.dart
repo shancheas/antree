@@ -6,7 +6,7 @@ class FoodBanner extends StatelessWidget {
     return Container(
       height: 200,
       child: Image.network(
-        'https://i.ytimg.com/vi/Nq896-sPDrc/maxresdefault.jpg',
+        'http://www.burgerking.com.my/upload/image/offer/79/Double%20King_900pxx480px.png',
         fit: BoxFit.cover,
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:antree/components/menu_tile.dart';
+import 'package:antree/pages/purchase_view.dart';
 import 'package:antree/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -166,7 +167,7 @@ class _MenusViewState extends State<MenusView>
           child: Text('ORDER', style: AntreeThemes.heading),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => MenusView()));
+                .push(MaterialPageRoute(builder: (context) => PurchaseView()));
           },
         ),
       ),
