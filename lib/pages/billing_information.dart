@@ -1,16 +1,14 @@
-import 'package:antree/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'billing_information.dart';
-import 'payments_view.dart';
+import 'home_view.dart';
 
-class PurchaseView extends StatefulWidget {
+class BillingInformation extends StatefulWidget {
   @override
-  _PurchaseViewState createState() => _PurchaseViewState();
+  _BillingInformationState createState() => _BillingInformationState();
 }
 
-class _PurchaseViewState extends State<PurchaseView> {
+class _BillingInformationState extends State<BillingInformation> {
   Widget paymentDetails(String title, String price) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -24,24 +22,14 @@ class _PurchaseViewState extends State<PurchaseView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        title: Text('Confirm Order'),
+        title: Text('Billing Information'),
       ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            //2
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "Ticket",
-                style: TextStyle(
-                    color: Colors.grey.shade700, fontWeight: FontWeight.bold),
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4.0),
               child: Row(
@@ -116,19 +104,10 @@ class _PurchaseViewState extends State<PurchaseView> {
             //1
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "Order Summary",
-                    style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text('Add Items',
-                      style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold))
-                ],
+              child: Text(
+                "Order Summary",
+                style: TextStyle(
+                    color: Colors.grey.shade700, fontWeight: FontWeight.bold),
               ),
             ),
             Card(
@@ -164,40 +143,6 @@ class _PurchaseViewState extends State<PurchaseView> {
               ),
             ),
 
-            //3
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "Payment Method",
-                style: TextStyle(
-                    color: Colors.grey.shade700, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Card(
-              color: Colors.white,
-              elevation: 2.0,
-              child: ListTile(
-                leading: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text('cash',
-                        style: TextStyle(color: Colors.blueAccent)),
-                  ),
-                ),
-                title: Text("Rp. 300.000",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                trailing: FlatButton(
-                  child: Text('Change',
-                      style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold)),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => PaymentsView()));
-                  },
-                ),
-              ),
-            ),
-
             //4
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -219,39 +164,56 @@ class _PurchaseViewState extends State<PurchaseView> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 90,
-            )
-          ],
-        ),
-      ),
-      bottomSheet: Container(
-        width: double.infinity,
-        color: Colors.white,
-        height: 85,
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Total'),
-                Text('Rp. 300.000', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))
-              ],
-            ),
-            Container(
-              width: double.infinity,
-              child: RaisedButton(
-                color: Colors.blue,
-                child: Text('ORDER', style: AntreeThemes.confirmTextStyle),
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) => BillingInformation()
-                      )
-                  );
-                },
+
+            //4
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                "Payment Method",
+                style: TextStyle(
+                    color: Colors.grey.shade700, fontWeight: FontWeight.bold),
               ),
+            ),
+            Card(
+              color: Colors.white,
+              elevation: 2.0,
+              child: Column(
+                children: <Widget>[
+                  paymentDetails('Pay Ammount', '300.000'),
+                  paymentDetails('Change', '34.010'),
+                  paymentDetails('Served By', 'Jhon'),
+                  paymentDetails('Chasier', 'Meghan'),
+                ],
+              ),
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: MaterialButton(
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            builder: (context) => HomePage()), (Route<dynamic> route) => false);
+                      },
+                      child: Text('Home'),
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: MaterialButton(
+                      onPressed: () {},
+                      child: Text('Testimonial'),
+                      color: Colors.orange,
+                    ),
+                  ),
+                )
+              ],
             )
           ],
         ),
